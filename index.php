@@ -1,6 +1,6 @@
 <?php session_start();
 	try {
-	//Connection ‡ MySQL
+	//Connection ÔøΩ MySQL
     $bdd = new PDO('mysql:host=localhost;dbname=fashioncanin','root','root');
 ?>
 <!DOCTYPE html>
@@ -19,31 +19,45 @@
 </head>
 
 <body>
-<?php
-	$resultat = $bdd->query('SELECT * FROM individu'); //stockage rÈsultat query
-	//Parours de toutes les donnÈes
-	while ($data = $resultat->fetch()){ 
-?>
-	<p>
-		NOM : 
-		<?php 
-		//Affichage des donnÈes
-		echo $data['NOM_INDIVIDU']; ?>
-		<br/> PRENOM :
-		<?php echo $data['LOGIN_INDIVIDU']; ?>
-	</p>
-	<?php } ?>
-	<?php $resultat->closeCursor(); ?>
-	<?php
+
+		<nav>
+	    <div class="nav-wrapper  blue-grey lighten-2">
+	      <a href="index.php" class="brand-logo center">Fashion Canin</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <li><a href="inscription.php" title="inscription">Inscription</a></li>
+					<li><a href="Connexion.php" title="Connexion">Connexion</a></li>
+	      </ul>
+	    </div>
+	  </nav>
+		<main role="main">
+		<p>Bienvenue sur le mini projet d'√©t√© de Valentino Dolasevic ! :)</p>
+		<?php
+		$resultat = $bdd->query('SELECT * FROM individu'); //stockage rÔøΩsultat query
+		//Parours de toutes les donnÔøΩes
+		while ($data = $resultat->fetch()){
+		?>
+
+		<p>
+			NOM :
+			<?php
+			//Affichage des donnÔøΩes
+			echo $data['NOM_INDIVIDU']; ?>
+			<br/> PRENOM :
+			<?php echo $data['LOGIN_INDIVIDU']; ?>
+		</p>
+		<?php } ?>
+		<?php $resultat->closeCursor(); ?>
+		<?php
+			  }
+		  catch (Exception $e)
+		  {
+			// En cas d'erreur, on affiche un message et on arrÔøΩte tout
+			die('Erreur : ' . $e->getMessage());
 		  }
-	  catch (Exception $e)
-	  {
-		// En cas d'erreur, on affiche un message et on arrÍte tout
-		die('Erreur : ' . $e->getMessage());
-	  }
-	?>
-	<!--JavaScript Materialize-->
-     <script type="text/javascript" src="js/materialize.min.js"></script>
+		?>
+		<!--JavaScript Materialize-->
+	</main>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 
 </html>
