@@ -7,7 +7,7 @@ try {
     if (!empty($_POST['nomindividu'])) {
 
     	// Formulaire rempli => insertion en base de donnees via données récupérer d'autres tables (ASSOCIATION)
-		$req = $bdd->prepare('INSERT INTO inscription_joueur(ID_CONCOURS,ID_INDIVIDU,DATE_INSCRIPTIONJOUEUR) VALUES(:nom,:concours,:dateinscriptionjoueur)');
+		$req = $bdd->prepare('INSERT INTO inscription_joueur(ID_CONCOURS,ID_INDIVIDU,DATE_INSCRIPTIONJOUEUR) VALUES(:concours,:nom,:dateinscriptionjoueur)');
         $req->bindParam(':concours', $_POST['concours'], PDO::PARAM_INT);
         $req->bindParam(':nom', $_POST['nomindividu'], PDO::PARAM_INT);
         $req->bindParam(':dateinscriptionjoueur', $_POST['dateinscriptionjoueur'], PDO::PARAM_STR);
