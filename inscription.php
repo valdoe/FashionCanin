@@ -56,44 +56,44 @@
             endif;
           else: ?>
 
-				<div class="formulaire">
-					<form class="col s12" method="post" action="inscription.php">
-						<div class="email">
-							<div class="input-field col s12">
-								<input id="email" type="email" name="email" class="validate">
-								<label for="email" class="active">Email</label>
+					<div class="formulaire">
+						<form class="col s12" method="post" action="inscription.php">
+							<div class="email">
+								<div class="input-field col s12">
+									<input id="email" type="email" name="email" class="validate" required >
+									<label for="email" class="active">Email</label>
+								</div>
 							</div>
-						</div>
-						<div class="nom">
-							<div class="input-field col s12">
-								<input id="nom" type="text" name="nom" class="validate">
-								<label for="nom" class="active">Nom</label>
+							<div class="nom">
+								<div class="input-field col s12">
+									<input id="nom" type="text" name="nom" class="validate" required>
+									<label for="nom" class="active">Nom</label>
+								</div>
 							</div>
-						</div>
-						<div class="prenom">
-							<div class="input-field col s12">
-								<input id="prenom" type="text" name="prenom" class="validate">
-								<label for="prenom" class="active">Prenom</label>
+							<div class="prenom">
+								<div class="input-field col s12">
+									<input id="prenom" type="text" name="prenom" class="validate" required>
+									<label for="prenom" class="active">Prenom</label>
+								</div>
 							</div>
-						</div>
-						<div class="login">
-							<div class="input-field col s12">
-								<input id="login" type="text" name="login" class="validate">
-								<label for="login" class="active">Login</label>
+							<div class="login">
+								<div class="input-field col s12">
+									<input id="login" type="text" name="login" class="validate" required>
+									<label for="login" class="active">Login</label>
+								</div>
 							</div>
-						</div>
-						<div class="password">
-							<div class="input-field col s12">
-								<input id="password" type="password" name="password" class="validate">
-								<label for="password" class="active">Password</label>
+							<div class="password">
+								<div class="input-field col s12">
+									<input id="password" type="password" name="password" class="validate" required>
+									<label for="password" class="active">Password</label>
+								</div>
 							</div>
-						</div>
-						<button class="btn waves-effect waves-light center" type="submit">
-					    <i class="material-icons right">send</i>
-							<input type="submit" name="submit" />
-					  </button>
-    			</form>
-  			</div>
+							<button class="btn waves-effect waves-light center" type="submit">
+						    <i class="material-icons right">send</i>
+								<input type="submit" name="submit" />
+						  </button>
+		  			</form>
+					</div>
 
       </main>
   </body>

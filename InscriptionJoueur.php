@@ -53,12 +53,6 @@ try {
 		<main role="main" class ="container">
 			<div class="formulaire">
 				<form class="col s12" method="post" action="InscriptionJoueur.php">
-
-          <button class="btn waves-effect waves-light center" type="submit">
-              <i class="material-icons right">send</i
-              <input type="submit" name="submit" />
-          </button>
-
 					<div class="nom">
 						<label for="individu">Choissisez le joueur:</label>
 						<input list="nom" type="text" id="listnom" name="nomindividu" required>
@@ -92,8 +86,10 @@ try {
            </datalist>
          </div>
 
-
-
+         <button class="btn waves-effect waves-light center" type="submit">
+             <i class="material-icons right">send</i
+             <input type="submit" name="submit" />
+         </button>
 				</form>
 			</div>
 		</main>
