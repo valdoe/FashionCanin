@@ -14,7 +14,7 @@ try {
 		$msg = "Suppresion bien effectuee à : " . date("H:i:s");
 
 	} else {
-		$msg = "Veillez Choisir le concours a supprimer (La suppresion d'un concours entrainera la suppresion de celui-ci dans les tables en relation)";
+		$msg = "Veillez Choisir le concour a supprimer (La suppresion d'un concour entrainera la suppresion de celui-ci dans les tables en relation)";
 	}
 ?>
 
@@ -22,7 +22,7 @@ try {
 	<html>
 
 	<head>
-	    <title>Désinscription</title>
+	    <title>Supression d'un concour</title>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
