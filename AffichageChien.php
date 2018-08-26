@@ -9,7 +9,7 @@ try {
                           ON chien.ID_RACE = race_chien.ID_RACE where ID_INDIVIDU = :nom');
         $req->bindParam(':nom', $_POST['idindividu'], PDO::PARAM_INT);
         $req->execute();
-		$msg = "Requête correctement effectuée ! :) " . date("H:i:s");
+		$msg = "Requête correctement effectuée ! :), si rien ne s'affiche l'utilisateur n'a pas de chiens " . date("H:i:s");
 
 	} else {
 		$msg = "Veillez sélectionner un individu dans la liste afin d'afficher ses chiens";
