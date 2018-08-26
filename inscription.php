@@ -23,15 +23,7 @@
       <title>Inscription</title>
   </head>
   <body>
-				<nav>
-			    <div class="nav-wrapper  blue-grey lighten-2">
-			      <a href="index.php" class="brand-logo center">Fashion Canin</a>
-			      <ul id="nav-mobile" class="right hide-on-med-and-down">
-			        <li><a href="inscription.php" title="inscription">Inscription</a></li>
-							<li><a href="Connexion.php" title="Connexion">Connexion</a></li>
-			      </ul>
-			    </div>
-			  </nav>
+				<?php include("menu.php"); ?>
 				<main class ="container">
 				  <?php
           if(isset($_POST['login'])):

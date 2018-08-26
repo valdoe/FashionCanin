@@ -1,12 +1,9 @@
 <?php
 session_start();
 try {
-	// Connection MySQL
     $bdd = new PDO('mysql:host=localhost;dbname=fashioncanin','root','root');
     foreach ($_POST as $key => $value) { $_POST[$key]=htmlentities($value, ENT_QUOTES, 'UTF-8'); }
     if (!empty($_POST['concours'])) {
-
-    	// Formulaire rempli => insertion en base de donnees via données récupérer d'autres tables (ASSOCIATION)
 		$req = $bdd->prepare('DELETE FROM concours WHERE ID_CONCOURS = :concours');
         $req->bindParam(':concours', $_POST['concours'], PDO::PARAM_INT);
         echo $_POST['concours'];
@@ -32,18 +29,8 @@ try {
 	    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	    <link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-
 	<body>
-
-		<nav>
-		    <div class="nav-wrapper  blue-grey lighten-2">
-		      <a href="index.php" class="brand-logo center">Fashion Canin</a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="inscription.php" title="inscription">Inscription</a></li>
-				<li><a href="Connexion.php" title="Connexion">Connexion</a></li>
-		      </ul>
-		    </div>
-		</nav>
+		<?php include("menu.php"); ?>
 		<strong><?=$msg?></strong>
 		<main role="main" class ="container">
 			<div class="formulaire">

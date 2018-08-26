@@ -1,12 +1,10 @@
 <?php
 session_start();
 try {
-	// Connection MySQL
     $bdd = new PDO('mysql:host=localhost;dbname=fashioncanin','root','root');
     foreach ($_POST as $key => $value) { $_POST[$key]=htmlentities($value, ENT_QUOTES, 'UTF-8'); }
     if (!empty($_POST['nomindividu'])) {
 
-    	// Formulaire rempli => insertion en base de donnees via données récupérer d'autres tables (ASSOCIATION)
 		$req = $bdd->prepare('INSERT INTO inscription_joueur(ID_CONCOURS,ID_INDIVIDU,DATE_INSCRIPTIONJOUEUR) VALUES(:concours,:nom,:dateinscriptionjoueur)');
         $req->bindParam(':concours', $_POST['concours'], PDO::PARAM_INT);
         $req->bindParam(':nom', $_POST['nomindividu'], PDO::PARAM_INT);
@@ -22,7 +20,6 @@ try {
 		$msg = "Veillez vous inscrire.";
 	}
 ?>
-
 	<!DOCTYPE html>
 	<html>
 
@@ -40,15 +37,7 @@ try {
 
 	<body>
 
-		<nav>
-		    <div class="nav-wrapper  blue-grey lighten-2">
-		      <a href="index.php" class="brand-logo center">Fashion Canin</a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="inscription.php" title="inscription">Inscription</a></li>
-				<li><a href="Connexion.php" title="Connexion">Connexion</a></li>
-		      </ul>
-		    </div>
-		</nav>
+		<?php include("menu.php"); ?>
 		<strong><?=$msg?></strong>
 		<main role="main" class ="container">
 			<div class="formulaire">
@@ -69,7 +58,7 @@ try {
           <div class="dateinscriptionjoueur">
 						<div class="center-align">
               <label for="dateinscriptionjoueur"  >Date inscription du joueur à inscrire : </label>
-							<input id="dateinscriptionjoueur" type="date" name="dateinscriptionjoueur" class="validate">		
+							<input id="dateinscriptionjoueur" type="date" name="dateinscriptionjoueur" class="validate">
 						</div>
 					</div>
 

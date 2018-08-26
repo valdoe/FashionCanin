@@ -1,29 +1,22 @@
 <?php
 session_start();
 try {
-	// Connection MySQL
     $bdd = new PDO('mysql:host=localhost;dbname=fashioncanin','root','root');
     foreach ($_POST as $key => $value) { $_POST[$key]=htmlentities($value, ENT_QUOTES, 'UTF-8'); }
     if (!empty($_POST['idindividu'])) {
-
-    	// Formulaire rempli => insertion en base de donnees via données récupérer d'autres tables (ASSOCIATION)
 		$req = $bdd->prepare('SELECT chien.ID_CHIEN,chien.ID_CONCOURS,chien.NOM_CHIEN,chien.PEDIGREE_CHIEN, race_chien.NOM_RACE FROM chien
                           INNER JOIN race_chien
                           ON chien.ID_RACE = race_chien.ID_RACE where ID_INDIVIDU = :nom');
         $req->bindParam(':nom', $_POST['idindividu'], PDO::PARAM_INT);
         $req->execute();
-
-
 		$msg = "Requête correctement effectuée ! :) " . date("H:i:s");
 
 	} else {
 		$msg = "Veillez sélectionner un individu dans la liste afin d'afficher ses chiens";
 	}
 ?>
-
 	<!DOCTYPE html>
 	<html>
-
 	<head>
 	    <title>Affichage des chiens selon maitre</title>
 	    <meta charset="utf-8">
@@ -38,15 +31,7 @@ try {
 
 	<body>
 
-		<nav>
-		    <div class="nav-wrapper  blue-grey lighten-2">
-		      <a href="index.php" class="brand-logo center">Fashion Canin</a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="inscription.php" title="inscription">Inscription</a></li>
-				<li><a href="Connexion.php" title="Connexion">Connexion</a></li>
-		      </ul>
-		    </div>
-		</nav>
+		<?php include("menu.php"); ?>
 		<strong><?=$msg?></strong>
 		<main role="main" class ="container">
 			<div class="formulaire">
@@ -63,13 +48,10 @@ try {
 			 		 		?>
 			 			</datalist>
 		 			</div>
-
-
          <button class="btn waves-effect waves-light center" type="submit">
              <i class="material-icons right">send</i
              <input type="submit" name="submit" />
          </button>
-
 				</form>
 			</div>
       <?php
@@ -106,8 +88,6 @@ try {
                  endwhile;
               ?>
           </tbody>
-
-
         </table>
       <?php
       }
@@ -123,9 +103,7 @@ try {
         </table>
     	<?php
       }?>
-
 		</main>
-
 		<!--JavaScript Materialize-->
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 	</body>

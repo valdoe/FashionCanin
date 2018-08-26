@@ -1,7 +1,6 @@
 <?php session_start();
 	try {
     $bdd = new PDO('mysql:host=localhost;dbname=fashioncanin','root','root');
-
 	?>
 <!DOCTYPE html>
   <html lang="en">
@@ -15,18 +14,10 @@
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <!--Import materialize.css-->
 	    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
       <title>Connexion</title>
   </head>
   <body>
-				<nav>
-			    <div class="nav-wrapper  blue-grey lighten-2">
-			      <a href="index.php" class="brand-logo center">Fashion Canin</a>
-			      <ul id="nav-mobile" class="right hide-on-med-and-down">
-			        <li><a href="inscription.php" title="inscription">Inscription</a></li>
-			      </ul>
-			    </div>
-			  </nav>
+				<?php include("menu.php"); ?>
 				<main class ="container">
 						<?php  if (isset($_SESSION['id']) AND isset($_SESSION['login'])):
 							echo 'Bonjour '. $_SESSION['login'];?>
@@ -34,15 +25,14 @@
 						<?php
 						   else:
 							  if ((isset($_POST['login']) AND isset($_POST['password']))):
-									$sanitized_password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
 									$req = $bdd->prepare('SELECT ID_INDIVIDU, PASSWORD_INDIVIDU, LOGIN_INDIVIDU FROM INDIVIDU WHERE LOGIN_INDIVIDU = :login');
 									$req->bindParam(':login', $_POST['login'], PDO::PARAM_STR);
 									$req->execute();
 									$result = $req->fetch();
-									if(password_verify($sanitized_password,$result['PASSWORD_INDIVIDU'])):
+									if(password_verify($_POST['password'],$result['PASSWORD_INDIVIDU'])):
 											$_SESSION['id'] = $result['ID_INDIVIDU'];
 							        $_SESSION['login'] = $result['LOGIN_INDIVIDU'];
-			                //header('Location: ../connexion.php');
+			                header('Location: connexion.php');
 											echo 'Bonjour '. $_SESSION['login']; ?>
 											</br>
 											<a href="deconnexion.php">Logout</a>
@@ -79,13 +69,11 @@
 						<?php
 				 endif;
 			 endif;
-
 		 }
 		catch (Exception $e)
 		{
 			die('Erreur : ' . $e->getMessage());
 		}?>
-
       </main>
   </body>
   </html>
